@@ -1147,7 +1147,7 @@ p {
 .soil-testing-section {
     padding: 100px 0;
     background: linear-gradient(135deg, rgba(45, 90, 39, 0.7) 0%, rgba(30, 61, 26, 0.75) 100%),
-                url('../images/healthy-lawn-after.jpg') center/cover no-repeat;
+                url('https://storage.googleapis.com/kws-clientele/Keepin%20it%20Green/healthy-lawn-after-600w.webp') center/cover no-repeat;
     overflow: hidden;
     position: relative;
 }
@@ -1598,7 +1598,7 @@ p {
    =================================== */
 .bottom-cta {
     padding: clamp(60px, 10vw, 100px) 0;
-    background: url('../images/lawn-care-family-dog-playing.webp') center/cover no-repeat;
+    background: url('https://storage.googleapis.com/kws-clientele/Keepin%20it%20Green/lawn-care-family-dog-playing-1400w.webp') center/cover no-repeat;
     text-align: center;
     position: relative;
 }
