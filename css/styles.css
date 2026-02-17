@@ -3522,28 +3522,6 @@ p {
     transform: scale(1.1);
 }
 
-/* Nav link underline animation */
-.nav-link {
-    position: relative;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--accent-orange);
-    transition: width 0.3s ease, left 0.3s ease;
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 70%;
-    left: 15%;
-}
-
 /* Button press effect */
 .btn:active {
     transform: translateY(1px) scale(0.98);
