@@ -3355,6 +3355,459 @@ p {
     }
 }
 
+/* ===================================
+   SCROLL & ENTRANCE ANIMATIONS
+   =================================== */
+
+/* Base hidden states — applied by JS */
+.anim-fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.anim-fade-up.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.anim-fade-in {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.anim-fade-in.animate-in {
+    opacity: 1;
+}
+
+.anim-fade-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.anim-fade-left.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.anim-fade-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.anim-fade-right.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.anim-scale-in {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.anim-scale-in.animate-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger delays for grid children */
+.anim-stagger > .animate-in:nth-child(1) { transition-delay: 0s; }
+.anim-stagger > .animate-in:nth-child(2) { transition-delay: 0.1s; }
+.anim-stagger > .animate-in:nth-child(3) { transition-delay: 0.2s; }
+.anim-stagger > .animate-in:nth-child(4) { transition-delay: 0.3s; }
+.anim-stagger > .animate-in:nth-child(5) { transition-delay: 0.4s; }
+
+/* Page hero entrance */
+.page-hero-content {
+    animation: heroFadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-stats .hero-stat {
+    animation: heroFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-stats .hero-stat:nth-child(1) { animation-delay: 0.5s; }
+.hero-stats .hero-stat:nth-child(2) { animation-delay: 0.65s; }
+.hero-stats .hero-stat:nth-child(3) { animation-delay: 0.8s; }
+
+/* Homepage hero */
+.hero-content {
+    animation: heroFadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+.hero-banner {
+    animation: heroFadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+}
+
+/* Highlight label slide-in */
+.highlight-label {
+    transition: var(--transition);
+}
+
+.anim-fade-up .highlight-label,
+.anim-fade-in .highlight-label {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+}
+
+.anim-fade-up.animate-in .highlight-label,
+.anim-fade-in.animate-in .highlight-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tagline box pop */
+.tagline-box {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+
+.tagline-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 30px rgba(255, 107, 53, 0.3);
+}
+
+/* Showcase badge pulse */
+@keyframes badgePulse {
+    0%, 100% { box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4); }
+    50% { box-shadow: 0 8px 40px rgba(255, 107, 53, 0.6); }
+}
+
+.showcase-badge-text {
+    animation: badgePulse 3s ease-in-out infinite;
+}
+
+/* Feature icon hover spin */
+.feature-icon {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 15px rgba(45, 90, 39, 0.3);
+}
+
+/* Showcase feature icon bounce on hover */
+.showcase-feature-icon {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.showcase-feature:hover .showcase-feature-icon {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+/* Soil metric number count-up feel */
+.soil-metric .metric-value {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.soil-metric:hover .metric-value {
+    transform: scale(1.1);
+}
+
+/* Nav link underline animation */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent-orange);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 70%;
+    left: 15%;
+}
+
+/* Button press effect */
+.btn:active {
+    transform: translateY(1px) scale(0.98);
+    transition-duration: 0.1s;
+}
+
+/* Trust badge hover */
+.trust-badge {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trust-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Testimonial card subtle tilt */
+.testimonial-card {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-6px) rotate(-0.5deg);
+    box-shadow: var(--shadow-strong);
+}
+
+/* Testimonial stars shimmer */
+@keyframes starShimmer {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.3); }
+}
+
+.testimonial-stars {
+    animation: starShimmer 2.5s ease-in-out infinite;
+}
+
+/* Soil report mockup float */
+@keyframes gentleFloat {
+    0%, 100% { transform: translateY(0) rotate(2deg); }
+    50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+.soil-report-mockup .soil-report {
+    animation: gentleFloat 4s ease-in-out infinite;
+}
+
+/* Before/after slider handle pulse */
+@keyframes sliderPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+}
+
+.slider-button {
+    animation: sliderPulse 2s ease-in-out infinite;
+}
+
+/* Package card featured glow */
+@keyframes featuredGlow {
+    0%, 100% { border-color: var(--accent-orange); box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); }
+    50% { border-color: var(--accent-orange); box-shadow: 0 0 20px rgba(255, 107, 53, 0.15); }
+}
+
+.package-card.featured {
+    animation: featuredGlow 3s ease-in-out infinite;
+}
+
+/* Footer link hover */
+.footer-links a {
+    transition: color 0.2s ease, padding-left 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-green);
+    padding-left: 6px;
+}
+
+/* Footer contact item hover */
+.footer-contact-item {
+    transition: transform 0.2s ease;
+}
+
+.footer-contact-item:hover {
+    transform: translateX(4px);
+}
+
+/* Mobile bottom nav bounce on tap */
+.mobile-bottom-link {
+    transition: transform 0.2s ease;
+}
+
+.mobile-bottom-link:active {
+    transform: scale(0.9);
+}
+
+/* Form focus glow */
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    box-shadow: 0 0 0 3px rgba(124, 179, 66, 0.2);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Form submit button loading shimmer */
+@keyframes btnShimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Image hover zoom */
+.showcase-image img,
+.split-content-image img {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.showcase-image:hover img,
+.split-content-image:hover img {
+    transform: scale(1.03);
+}
+
+/* Service card image zoom on hover */
+.service-card:hover .service-card-bg {
+    transform: scale(1.08);
+}
+
+.service-card-bg {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Learn more arrow slide */
+.learn-more svg {
+    transition: transform 0.3s ease;
+}
+
+.learn-more:hover svg {
+    transform: translateX(4px);
+}
+
+/* Map container reveal */
+.map-container {
+    transition: box-shadow 0.4s ease;
+}
+
+.map-container:hover {
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* CTA button hover glow */
+.btn-accent {
+    transition: all 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-accent:hover {
+    box-shadow: 0 6px 25px rgba(255, 107, 53, 0.4);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 6px 25px rgba(45, 90, 39, 0.3);
+}
+
+/* FAQ item expand animation */
+.faq-answer {
+    transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq-question::after {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.faq-item.active .faq-question::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Navbar slide-down on load */
+.navbar {
+    animation: navSlideDown 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes navSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Story section content reveal */
+.story-content {
+    animation: heroFadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+/* Video showcase player entrance */
+.video-showcase-player {
+    transition: transform 0.3s ease;
+}
+
+.video-showcase-player:hover {
+    transform: scale(1.01);
+}
+
+/* Grade circle pulse */
+@keyframes gradePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.grade-circle {
+    animation: gradePulse 2s ease-in-out infinite;
+}
+
+/* Services modal card entrance */
+.services-modal-overlay.active .services-modal-card {
+    animation: modalCardIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.services-modal-overlay.active .services-modal-card:nth-child(1) { animation-delay: 0.1s; }
+.services-modal-overlay.active .services-modal-card:nth-child(2) { animation-delay: 0.2s; }
+.services-modal-overlay.active .services-modal-card:nth-child(3) { animation-delay: 0.3s; }
+.services-modal-overlay.active .services-modal-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes modalCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Services modal card hover */
+.services-modal-card-img {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.services-modal-card:hover .services-modal-card-img {
+    transform: scale(1.06);
+}
+
+.services-modal-card {
+    overflow: hidden;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .anim-fade-up,
+    .anim-fade-in,
+    .anim-fade-left,
+    .anim-fade-right,
+    .anim-scale-in {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 /* Print Styles */
 @media print {
     .navbar,

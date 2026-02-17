@@ -201,42 +201,144 @@ function initFAQAccordion() {
    SCROLL ANIMATIONS
    =================================== */
 function initScrollAnimations() {
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
+    // Respect reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
 
-                // Animate children with stagger
-                const children = entry.target.querySelectorAll('.animate-stagger');
-                children.forEach((child, index) => {
-                    child.style.transitionDelay = `${index * 0.1}s`;
-                    child.classList.add('animate-in');
-                });
+                // Stagger children of grid containers
+                if (entry.target.classList.contains('anim-stagger')) {
+                    var kids = entry.target.children;
+                    for (var i = 0; i < kids.length; i++) {
+                        (function(child, delay) {
+                            setTimeout(function() { child.classList.add('animate-in'); }, delay);
+                        })(kids[i], i * 120);
+                    }
+                }
+
+                observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { rootMargin: '0px 0px -60px 0px', threshold: 0.15 });
 
-    // Observe elements with animation classes
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    // --- Fade Up: section headers, intros, content blocks, CTAs ---
+    var fadeUpSelectors = [
+        '.section-header',
+        '.showcase-intro',
+        '.highlight-header',
+        '.highlight-cta',
+        '.content-block',
+        '.tagline-box',
+        '.soil-testing-content',
+        '.soil-report-mockup',
+        '.video-showcase-content',
+        '.video-showcase-player',
+        '.before-after-container',
+        '.location-content',
+        '.page-section-header',
+        '.additional-services',
+        '.bottom-cta .container',
+        '.page-contact-form',
+        '.page-contact-section .section-header',
+        '.map-grid > div:first-child'
+    ];
+
+    document.querySelectorAll(fadeUpSelectors.join(',')).forEach(function(el) {
+        el.classList.add('anim-fade-up');
         observer.observe(el);
     });
 
-    // Add animation classes to common elements
-    document.querySelectorAll('.feature-item, .service-card, .testimonial-card, .package-card').forEach(el => {
-        el.classList.add('animate-on-scroll');
+    // --- Scale In: images, visual elements ---
+    var scaleSelectors = [
+        '.showcase-visual',
+        '.showcase-image',
+        '.split-content-image',
+        '.before-after-slider',
+        '.map-container'
+    ];
+
+    document.querySelectorAll(scaleSelectors.join(',')).forEach(function(el) {
+        el.classList.add('anim-scale-in');
+        observer.observe(el);
     });
 
-    // Observe bottom CTA container
-    const bottomCtaContainer = document.querySelector('.bottom-cta .container');
-    if (bottomCtaContainer) {
-        observer.observe(bottomCtaContainer);
-    }
+    // --- Stagger grids: feature grids, service cards, testimonials, packages, metrics, showcase features ---
+    var staggerSelectors = [
+        '.features-grid',
+        '.services-grid',
+        '.testimonials-grid',
+        '.packages-grid',
+        '.soil-metrics',
+        '.showcase-features',
+        '.trust-badges',
+        '.footer-grid',
+        '.services-modal-grid'
+    ];
+
+    document.querySelectorAll(staggerSelectors.join(',')).forEach(function(el) {
+        el.classList.add('anim-stagger');
+        // Give children the animation class
+        for (var i = 0; i < el.children.length; i++) {
+            el.children[i].classList.add('anim-fade-up');
+        }
+        observer.observe(el);
+    });
+
+    // --- Fade Left/Right for split layouts ---
+    document.querySelectorAll('.split-content').forEach(function(el) {
+        var text = el.querySelector('.split-content-text');
+        var img = el.querySelector('.split-content-image');
+        if (text) { text.classList.add('anim-fade-left'); observer.observe(text); }
+        if (img) { img.classList.add('anim-fade-right'); observer.observe(img); }
+    });
+
+    // Soil testing grid: left text, right mockup
+    document.querySelectorAll('.soil-testing-grid').forEach(function(el) {
+        var children = el.children;
+        if (children[0]) { children[0].classList.add('anim-fade-left'); observer.observe(children[0]); }
+        if (children[1]) { children[1].classList.add('anim-fade-right'); observer.observe(children[1]); }
+    });
+
+    // Video showcase: left content, right player
+    document.querySelectorAll('.video-showcase-layout').forEach(function(el) {
+        var content = el.querySelector('.video-showcase-content');
+        var player = el.querySelector('.video-showcase-player');
+        if (content) { content.classList.add('anim-fade-left'); observer.observe(content); }
+        if (player) { player.classList.add('anim-fade-right'); observer.observe(player); }
+    });
+
+    // Location grid: left text, right map
+    document.querySelectorAll('.location-grid').forEach(function(el) {
+        var children = el.children;
+        if (children[0]) { children[0].classList.add('anim-fade-left'); observer.observe(children[0]); }
+        if (children[1]) { children[1].classList.add('anim-fade-right'); observer.observe(children[1]); }
+    });
+
+    // Map grid on about page
+    document.querySelectorAll('.map-grid').forEach(function(el) {
+        var children = el.children;
+        if (children[0]) { children[0].classList.add('anim-fade-left'); observer.observe(children[0]); }
+        if (children[1]) { children[1].classList.add('anim-fade-right'); observer.observe(children[1]); }
+    });
+
+    // FAQ items stagger
+    document.querySelectorAll('.faq-list').forEach(function(el) {
+        el.classList.add('anim-stagger');
+        for (var i = 0; i < el.children.length; i++) {
+            el.children[i].classList.add('anim-fade-up');
+        }
+        observer.observe(el);
+    });
+
+    // Contact grid: form left, info right
+    document.querySelectorAll('.contact-grid').forEach(function(el) {
+        var children = el.children;
+        if (children[0]) { children[0].classList.add('anim-fade-left'); observer.observe(children[0]); }
+        if (children[1]) { children[1].classList.add('anim-fade-right'); observer.observe(children[1]); }
+    });
 }
 
 /* ===================================
