@@ -395,6 +395,42 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /* ===================================
+   SERVICES MODAL
+   =================================== */
+document.addEventListener('DOMContentLoaded', function() {
+    const openBtn = document.getElementById('view-services-btn');
+    const modal = document.getElementById('services-modal');
+
+    if (!openBtn || !modal) return;
+
+    const closeBtn = modal.querySelector('.services-modal-close');
+
+    openBtn.addEventListener('click', function() {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    closeBtn.addEventListener('click', function() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
+
+/* ===================================
    SOIL REPORT ANIMATION
    =================================== */
 document.addEventListener('DOMContentLoaded', function() {

@@ -14,7 +14,7 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap"
       rel="stylesheet" />
-    <link rel="stylesheet" href="css/styles.css?v=65" />
+    <link rel="stylesheet" href="css/styles.css?v=66" />
   </head>
   <body>
     <!-- Navigation -->
@@ -423,9 +423,7 @@
               </div>
             </div>
             <div class="text-center" style="margin-top: 40px">
-              <a href="lawn-care.html" class="btn btn-primary"
-                >View All Services</a
-              >
+              <button type="button" class="btn btn-primary" id="view-services-btn">View All Services</button>
             </div>
           </div>
         </section>
@@ -990,6 +988,51 @@
       </div>
     </nav>
 
-    <script src="js/main.js?v=2"></script>
+    <!-- Services Modal -->
+    <div class="services-modal-overlay" id="services-modal">
+      <div class="services-modal">
+        <button type="button" class="services-modal-close" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <h2>Our Services</h2>
+        <p class="services-modal-subtitle">Complete lawn care and landscaping solutions for Berks County</p>
+        <div class="services-modal-grid">
+          <div class="services-modal-card">
+            <div class="services-modal-card-img" style="background-image: url('https://storage.googleapis.com/kws-clientele/Keepin%20it%20Green/service-fertilization-600w.webp');"></div>
+            <div class="services-modal-card-body">
+              <h4>Lawn Care</h4>
+              <p>Science-backed soil testing and custom 6-step treatment programs tailored to your lawn's exact needs.</p>
+              <a href="lawn-care.html" class="btn btn-primary btn-sm">Learn More</a>
+            </div>
+          </div>
+          <div class="services-modal-card">
+            <div class="services-modal-card-img" style="background-image: url('https://storage.googleapis.com/kws-clientele/Keepin%20it%20Green/service-tree-600w.webp');"></div>
+            <div class="services-modal-card-body">
+              <h4>Tree & Shrub Care</h4>
+              <p>Professional deep root feeding, disease prevention, and pest control to keep your plants thriving.</p>
+              <a href="tree-shrub.html" class="btn btn-primary btn-sm">Learn More</a>
+            </div>
+          </div>
+          <div class="services-modal-card">
+            <div class="services-modal-card-img" style="background-image: url('https://storage.googleapis.com/kws-clientele/Keepin%20it%20Green/homepage-sick-weedy-lawn-1920w.webp');"></div>
+            <div class="services-modal-card-body">
+              <h4>Vegetation Control</h4>
+              <p>Targeted weed, pest, mosquito, and tick treatments by PA-certified licensed applicators.</p>
+              <a href="vegetation-control.html" class="btn btn-primary btn-sm">Learn More</a>
+            </div>
+          </div>
+          <div class="services-modal-card">
+            <div class="services-modal-card-img" style="background-image: url('https://storage.googleapis.com/kws-clientele/Keepin%20it%20Green/landscaping-hero-700w.webp');"></div>
+            <div class="services-modal-card-body">
+              <h4>Landscaping</h4>
+              <p>Weekly mowing, mulching, bush trimming, tree pruning, and complete landscape design & installation.</p>
+              <a href="landscaping.html" class="btn btn-primary btn-sm">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js?v=3"></script>
   </body>
 </html>
