@@ -2603,6 +2603,63 @@ p {
     margin: 0 auto;
 }
 
+.faq-search {
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.faq-search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: #999;
+    pointer-events: none;
+}
+
+.faq-search-input {
+    width: 100%;
+    padding: 16px 80px 16px 48px;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    background: var(--white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+}
+
+.faq-search-input:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+}
+
+.faq-search-input::placeholder {
+    color: #aaa;
+}
+
+.faq-search-count {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.faq-item.faq-hidden {
+    display: none;
+}
+
+.faq-no-results {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+    font-size: 1.1rem;
+}
+
 .faq-item {
     background: var(--white);
     border-radius: var(--border-radius);

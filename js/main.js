@@ -195,6 +195,46 @@ function initFAQAccordion() {
             }
         });
     });
+
+    // FAQ Search
+    const searchInput = document.getElementById('faq-search');
+    const searchCount = document.getElementById('faq-search-count');
+    if (!searchInput || !faqItems.length) return;
+
+    let noResults = document.querySelector('.faq-no-results');
+
+    searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase().trim();
+        let visible = 0;
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer-inner');
+            const text = (question ? question.textContent : '') + ' ' + (answer ? answer.textContent : '');
+
+            if (!query || text.toLowerCase().includes(query)) {
+                item.classList.remove('faq-hidden');
+                visible++;
+            } else {
+                item.classList.add('faq-hidden');
+                item.classList.remove('active');
+            }
+        });
+
+        if (query) {
+            searchCount.textContent = visible + ' result' + (visible !== 1 ? 's' : '');
+        } else {
+            searchCount.textContent = '';
+        }
+
+        if (!noResults) {
+            noResults = document.createElement('div');
+            noResults.className = 'faq-no-results';
+            noResults.textContent = 'No matching questions found. Try a different search term.';
+            document.querySelector('.faq-list').appendChild(noResults);
+        }
+        noResults.style.display = (visible === 0 && query) ? 'block' : 'none';
+    });
 }
 
 /* ===================================
