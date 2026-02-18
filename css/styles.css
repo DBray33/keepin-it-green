@@ -232,6 +232,7 @@ p {
     width: auto;
     margin-bottom: 12px;
     display: block;
+    mix-blend-mode: multiply;
 }
 
 .nav-menu {
