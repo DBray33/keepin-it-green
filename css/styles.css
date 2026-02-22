@@ -3000,7 +3000,56 @@ p {
 
     .homepage-sidebar {
         width: 340px;
-        padding: 30px 24px;
+        padding: 0;
+    }
+
+    .sidebar-form-container {
+        padding: 20px 22px;
+        justify-content: flex-start;
+    }
+
+    .sidebar-form-container h3 {
+        font-size: 1.25rem;
+        margin-bottom: 4px;
+    }
+
+    .sidebar-form-container .form-subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 14px;
+    }
+
+    .sidebar-form-container .contact-form {
+        padding: 18px;
+    }
+
+    .sidebar-form-container .contact-form .form-group {
+        margin-bottom: 10px;
+    }
+
+    .sidebar-form-container .contact-form label {
+        font-size: 0.75rem;
+        margin-bottom: 4px;
+    }
+
+    .sidebar-form-container .contact-form input,
+    .sidebar-form-container .contact-form select,
+    .sidebar-form-container .contact-form textarea {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .sidebar-form-container .contact-form textarea {
+        min-height: 50px;
+    }
+
+    .sidebar-form-container .contact-form .btn {
+        padding: 10px;
+        font-size: 0.9rem;
+        margin-top: 4px;
+    }
+
+    .sidebar-form-container .form-phone-alt {
+        margin-top: 12px;
     }
 
     .nav-menu {
