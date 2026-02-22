@@ -1552,6 +1552,7 @@ p {
     padding: 80px 0;
     background: var(--dark-gray);
     color: var(--white);
+    overflow: hidden;
 }
 
 .location-grid {
