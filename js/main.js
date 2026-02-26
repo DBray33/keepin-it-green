@@ -419,6 +419,7 @@ function initFormValidation() {
 
             if (isValid) {
                 const formData = new FormData(form);
+                formData.append('form-name', form.getAttribute('name'));
                 fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
