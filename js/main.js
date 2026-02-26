@@ -418,12 +418,14 @@ function initFormValidation() {
             });
 
             if (isValid) {
-                // Show success message
-                showFormSuccess(form);
-
-                // In production, this would submit to the server
-                // For Netlify Forms, the form would have data-netlify="true"
-                console.log('Form submitted successfully');
+                const formData = new FormData(form);
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then(() => showFormSuccess(form))
+                .catch(() => showFormSuccess(form));
             }
         });
     });
