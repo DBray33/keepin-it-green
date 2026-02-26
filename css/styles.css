@@ -519,6 +519,82 @@ p {
     box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
 }
 
+/* Mobile bottom nav buttons (Services/About) */
+button.mobile-bottom-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Mobile Bottom Nav Slide-Up Overlays */
+.mobile-bottom-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-bottom-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-bottom-overlay-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-radius: 20px 20px 0 0;
+    padding: 24px 20px calc(90px + env(safe-area-inset-bottom));
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.mobile-bottom-overlay.active .mobile-bottom-overlay-panel {
+    transform: translateY(0);
+}
+
+.mobile-bottom-overlay-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-bottom: 12px;
+    padding: 0 4px;
+}
+
+.mobile-bottom-overlay-panel a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 4px;
+    color: var(--text-dark);
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--light-gray);
+    transition: var(--transition);
+}
+
+.mobile-bottom-overlay-panel a:last-child {
+    border-bottom: none;
+}
+
+.mobile-bottom-overlay-panel a svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary-green);
+    flex-shrink: 0;
+}
+
+.mobile-bottom-overlay-panel a:hover {
+    color: var(--primary-green);
+}
+
 /* ===================================
    HOMEPAGE - TWO COLUMN LAYOUT
    =================================== */

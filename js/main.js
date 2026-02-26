@@ -518,25 +518,33 @@ function isInViewport(element) {
 }
 
 /* ===================================
-   MOBILE BOTTOM NAV SERVICES DROPDOWN
+   MOBILE BOTTOM NAV OVERLAY MENUS
    =================================== */
 document.addEventListener('DOMContentLoaded', function() {
-    const servicesBtn = document.querySelector('.mobile-bottom-services');
-    const servicesDropdown = document.querySelector('.mobile-services-dropdown');
+    const overlayBtns = document.querySelectorAll('[data-overlay]');
+    const overlays = document.querySelectorAll('.mobile-bottom-overlay');
 
-    if (servicesBtn && servicesDropdown) {
-        servicesBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            servicesDropdown.classList.toggle('active');
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!servicesBtn.contains(e.target) && !servicesDropdown.contains(e.target)) {
-                servicesDropdown.classList.remove('active');
-            }
-        });
+    function closeAll() {
+        overlays.forEach(o => o.classList.remove('active'));
     }
+
+    overlayBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.getElementById(this.dataset.overlay);
+            if (!target) return;
+            const isOpen = target.classList.contains('active');
+            closeAll();
+            if (!isOpen) target.classList.add('active');
+        });
+    });
+
+    // Close on backdrop tap
+    overlays.forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === this) closeAll();
+        });
+    });
 });
 
 /* ===================================
