@@ -5,3 +5,6 @@ images/
 *.swo
 *~
 .env
+
+# Local Netlify folder
+.netlify
