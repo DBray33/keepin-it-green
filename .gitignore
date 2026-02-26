@@ -1,10 +1,55 @@
+# macOS system files
+._*
 .DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Claude Code files
+.claude/
+.claude.json
+
+# Editor files
 .vscode/
-images/
+.idea/
 *.swp
 *.swo
 *~
+.sublime-*
+
+# Node modules (if you ever use npm)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
 .env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Project-specific
+images/
 
 # Local Netlify folder
 .netlify

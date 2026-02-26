@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# AI Search Crawlers - Allow
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# AI Training Crawlers - Block (protect content from training, allow search)
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+# Reference files
+Sitemap: https://keepingitgreenls.com/sitemap.xml

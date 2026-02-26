@@ -1,0 +1,23 @@
+# -----------------------------------------
+# Canonical: force HTTPS + apex (no-www)
+# -----------------------------------------
+http://keepingitgreenls.com/*    https://keepingitgreenls.com/:splat   301!
+http://www.keepingitgreenls.com/*  https://keepingitgreenls.com/:splat 301!
+https://www.keepingitgreenls.com/* https://keepingitgreenls.com/:splat 301!
+
+# -----------------------------------------
+# Netlify subdomain -> custom domain
+# -----------------------------------------
+https://keepin-it-green.netlify.app/* https://keepingitgreenls.com/:splat 301!
+
+# -----------------------------------------
+# .html -> extensionless (clean URLs)
+# -----------------------------------------
+/index.html              /                    301!
+/lawn-care.html          /lawn-care           301
+/tree-shrub.html         /tree-shrub          301
+/vegetation-control.html /vegetation-control  301
+/landscaping.html        /landscaping         301
+/about.html              /about               301
+/faq.html                /faq                 301
+/contact.html            /contact             301
